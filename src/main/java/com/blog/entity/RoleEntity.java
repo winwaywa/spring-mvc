@@ -1,12 +1,16 @@
 package com.blog.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "category")
-public class CategoryEntity extends BaseEntity {
+@Table(name = "role")
+public class RoleEntity extends BaseEntity {
 
 	@Column(name = "code")
 	private String code;
@@ -16,6 +20,17 @@ public class CategoryEntity extends BaseEntity {
 
 	public String getCode() {
 		return code;
+	}
+
+	@ManyToMany(mappedBy = "roles")
+	private List<UserEntity> users = new ArrayList<>();
+
+	public List<UserEntity> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<UserEntity> users) {
+		this.users = users;
 	}
 
 	public void setCode(String code) {

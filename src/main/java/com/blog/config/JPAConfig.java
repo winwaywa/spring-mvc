@@ -16,7 +16,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories(basePackages = {"com.blog.reposiroty"})
+@EnableJpaRepositories(basePackages = {"com.blog.repository"})
 @EnableTransactionManagement // transaction
 public class JPAConfig {
 
@@ -51,8 +51,9 @@ public class JPAConfig {
 	
 	Properties additionalProperties() {
 		Properties properties = new Properties();
-		properties.setProperty("hibernate.hbm2ddl.auto", "create");
-		//properties.setProperty("hibernate.hbm2ddl.auto", "none");
+		//properties.setProperty("hibernate.hbm2ddl.auto", "create");
+		properties.setProperty("hibernate.hbm2ddl.auto", "none");
+		properties.setProperty("hibernate.enable_lazy_load_no_trans", "true"); // enable load lazy
 		return properties;
 	}
 }

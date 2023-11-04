@@ -12,7 +12,7 @@
 	</decorator>
 
 	<decorator name="authentication" page="authentication.jsp">
-		<pattern>/login*</pattern>
+		<pattern>/login</pattern>
 	</decorator>
 	
 	<decorator name="web" page="web.jsp">

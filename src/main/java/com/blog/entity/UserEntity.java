@@ -5,8 +5,9 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinTable;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -15,35 +16,28 @@ import javax.persistence.Table;
 public class UserEntity extends BaseEntity {
 
 	@Column(name = "username")
-	private String username;
+	private String userName;
 
 	@Column(name = "password")
 	private String password;
 
 	@Column(name = "fullname")
-	private String fullname;
+	private String fullName;
 
-	@Column(name = "status")
-	private int status;
+	@Column
+	private Integer status;
 
-	@ManyToMany
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "userid"), inverseJoinColumns = @JoinColumn(name = "roleid"))
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "userid"), 
+								  inverseJoinColumns = @JoinColumn(name = "roleid"))
 	private List<RoleEntity> roles = new ArrayList<>();
 
-	public List<RoleEntity> getRoles() {
-		return roles;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setRoles(List<RoleEntity> roles) {
-		this.roles = roles;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassword() {
@@ -54,20 +48,27 @@ public class UserEntity extends BaseEntity {
 		this.password = password;
 	}
 
-	public String getFullname() {
-		return fullname;
+	public String getFullName() {
+		return fullName;
 	}
 
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 
+	public List<RoleEntity> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<RoleEntity> roles) {
+		this.roles = roles;
+	}
 }

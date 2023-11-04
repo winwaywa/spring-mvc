@@ -56,6 +56,13 @@
 			<artifactId>spring-context-support</artifactId>
 			<version>${springframework.version}</version>
 		</dependency>
+		
+		<!-- spring aspects using for jpa auditing-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
 
 		<!-- spring security -->
 		<dependency>
@@ -73,7 +80,14 @@
 			<artifactId>spring-security-acl</artifactId>
 			<version>${springsecurity.version}</version>
 		</dependency>
-		
+
+		<!-- spring secuirty taglibs -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${springsecurity.version}</version>
+		</dependency>
+
 		<!-- servlet api -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -95,14 +109,14 @@
 			<version>${jstl.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/opensymphony/sitemesh -->
+		<!-- sitemesh decorator -->
 		<dependency>
 			<groupId>opensymphony</groupId>
 			<artifactId>sitemesh</artifactId>
 			<version>${sitemesh.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<!-- mysql-connector -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>

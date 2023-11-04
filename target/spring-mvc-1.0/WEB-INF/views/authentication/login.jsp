@@ -29,11 +29,14 @@
 							</div>
 							<div class="col-md-6 col-lg-7 d-flex align-items-center">
 								<div class="card-body p-4 p-lg-5 text-black">
-									<c:if test="${not empty message}">
-										<div class="alert alert-${alert}" role="alert">${message}</div>
+									<c:if test="${param.incorrectAccount != null}">
+										<div class="alert alert-danger">Username or password
+											incorrect</div>
 									</c:if>
-									<form method="POST"
-										action="<c:url value='/login?action=login'/>">
+									<c:if test="${param.accessDenied != null}">
+										<div class="alert alert-danger">you Not authorize</div>
+									</c:if>
+									<form method="POST" action="j_spring_security_check">
 										<div class="d-flex align-items-center mb-3 pb-1">
 											<i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
 											<span class="h1 fw-bold mb-0">Login</span>
@@ -41,13 +44,13 @@
 
 
 										<div class="form-outline mb-4">
-											<input name="userName" type="username" id="inputUsername"
+											<input name="j_username" type="text" id="inputUsername"
 												class="form-control form-control-lg" /> <label
 												class="form-label" for="inputUsername">Username</label>
 										</div>
 
 										<div class="form-outline mb-4">
-											<input name="passWord" type="password" id="inputPassword"
+											<input name="j_password" type="password" id="inputPassword"
 												class="form-control form-control-lg" /> <label
 												class="form-label" for="inputPassword">Password</label>
 										</div>

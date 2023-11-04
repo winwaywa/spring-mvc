@@ -1,3 +1,4 @@
+<%@ page import="com.blog.util.SecurityUtils"%>
 <!-- Responsive navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<div class="container">
@@ -9,8 +10,7 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul
-				class="navbar-nav ms-auto mb-2 mb-lg-0 mr-auto">
+			<ul class="navbar-nav ms-auto mb-2 mb-lg-0 mr-auto">
 				<li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
 				<li class="nav-item"><a class="nav-link" href="#!">About</a></li>
 				<li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
@@ -18,16 +18,16 @@
 					href="#">Blog</a></li>
 			</ul>
 			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-				<c:if test="${not empty USERMODEL}">
-					<li class="nav-item"><a class="nav-link" href="#">Welcome,
-							${USERMODEL.fullName}</a></li>
+				<security:authorize access = "isAuthenticated()">
+					<li class="nav-item"><a class="nav-link" href="#">Wellcome <%=SecurityUtils.getPrincipal().getFullName()%></a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="<c:url value='logout?action=logout'/>">logout</a></li>
-				</c:if>
-				<c:if test="${empty USERMODEL}">
+						href="<c:url value='/logout'/>">logout</a></li>
+				</security:authorize>
+
+				<security:authorize access="isAnonymous()">
 					<li class="nav-item"><a class="nav-link"
-						href="<c:url value='login?action=login'/>">login</a></li>
-				</c:if>
+						href="<c:url value='/login'/>">login</a></li>
+				</security:authorize>
 			</ul>
 		</div>
 	</div>

@@ -7,14 +7,14 @@ import java.util.List;
 public class AbstractDTO<T> {
 
 	private Long id;
-	private Timestamp createdDate;
-	private Timestamp modifiedDate;
+	private Timestamp createdAt;
+	private Timestamp updatedAt;
 	private String createdBy;
-	private String modifiedBy;
+	private String updatedBy;
 	private long[] ids;
 	private List<T> listResult = new ArrayList<>();
 	private Integer page;
-	private Integer maxPageItem;
+	private Integer limit;
 	private Integer totalPage;
 	private Integer totalItem;
 	private String sortName;
@@ -31,20 +31,28 @@ public class AbstractDTO<T> {
 		this.id = id;
 	}
 
-	public Timestamp getCreatedDate() {
-		return createdDate;
+	public Timestamp getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setCreatedDate(Timestamp createdDate) {
-		this.createdDate = createdDate;
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
 	}
 
-	public Timestamp getModifiedDate() {
-		return modifiedDate;
+	public Timestamp getUpdatedAt() {
+		return updatedAt;
 	}
 
-	public void setModifiedDate(Timestamp modifiedDate) {
-		this.modifiedDate = modifiedDate;
+	public void setUpdatedAt(Timestamp updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	public String getCreatedBy() {
@@ -53,14 +61,6 @@ public class AbstractDTO<T> {
 
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
-	}
-
-	public String getModifiedBy() {
-		return modifiedBy;
-	}
-
-	public void setModifiedBy(String modifiedBy) {
-		this.modifiedBy = modifiedBy;
 	}
 
 	public long[] getIds() {
@@ -85,14 +85,6 @@ public class AbstractDTO<T> {
 
 	public void setPage(Integer page) {
 		this.page = page;
-	}
-
-	public Integer getMaxPageItem() {
-		return maxPageItem;
-	}
-
-	public void setMaxPageItem(Integer maxPageItem) {
-		this.maxPageItem = maxPageItem;
 	}
 
 	public Integer getTotalPage() {
@@ -149,5 +141,13 @@ public class AbstractDTO<T> {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public Integer getLimit() {
+		return limit;
+	}
+
+	public void setLimit(Integer limit) {
+		this.limit = limit;
 	}
 }

@@ -37,7 +37,7 @@
 		<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 			data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
-				<a class="collapse-item" href="<c:url value='/admin-category?type=list'/>">Category</a> 
+				<a class="collapse-item" href="<c:url value='/admin/category/list?page=1&limit=2'/>">Category</a> 
 				<a class="collapse-item" href="cards.html">News</a>
 			</div>
 		</div></li>

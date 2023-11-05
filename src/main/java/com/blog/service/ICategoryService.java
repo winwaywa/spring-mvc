@@ -2,22 +2,14 @@ package com.blog.service;
 
 import java.util.List;
 
-import com.blog.model.CategoryModel;
-import com.blog.paging.Pageble;
+import org.springframework.data.domain.Pageable;
+
+import com.blog.dto.CategoryDTO;
 
 public interface ICategoryService {
 
+	List<CategoryDTO> findAll(Pageable pageable);
 
-	List<CategoryModel> findAll(Pageble pageble);
-
-	CategoryModel save(CategoryModel categoryModel);
-
-	CategoryModel update(CategoryModel categoryModel);
-
-	void delete(Long[] ids);
-
-	int getTotalItems();
-	
-	CategoryModel findOne(Long id);
+	int getTotalItem();
 
 }

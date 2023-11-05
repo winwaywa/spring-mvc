@@ -32,13 +32,14 @@
 					</th>
 					<th scope="col">Code</th>
 					<th scope="col">Name</th>
+					<th scope="col">Update By</th>
 					<th scope="col">Update At</th>
 					<th scope="col">Action</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:if test="${not empty model.dataList}">
-					<c:forEach items="${model.dataList}" var="item">
+				<c:if test="${not empty model.listResult}">
+					<c:forEach items="${model.listResult}" var="item">
 						<tr>
 							<th class="align-bottom" scope="row">
 								<div class="form-check">
@@ -47,6 +48,7 @@
 							</th>
 							<td  class="align-bottom">${item.code}</td>
 							<td  class="align-bottom">${item.name}</td>
+							<td  class="align-bottom">${item.updatedBy}</td>
 							<td  class="align-bottom">${item.updatedAt}</td>
 							<td>
 								<c:url var="editURL" value="/admin-category">
@@ -68,35 +70,25 @@
 				<div id="pagination" class="text-center"></div>
 			</div>
 		</div>
-		<form action="<c:url value='/admin-category'/>" id="formSubmit"
+		<form action="<c:url value='/admin/category/list'/>" id="formSubmit"
 			method="GET">
-			<input type="hidden" name="type" value="" id="type">
 			<input type="hidden" name="page" value="" id="page">
-			<input type="hidden" name="maxPageItem" value="" id="maxPageItem">
-			<input type="hidden" name="sortName" value="" id="sortName">
-			<input type="hidden" name="sortValue" value="" id="sortValue">
+			<input type="hidden" name="limit" value="" id="limit">
 		</form>
 	</div>
 	<script>
-		let totalPages = ${model.totalPages};
-		let currentPage = ${model.page};
-		let maxPageItem = ${model.maxPageItem};
-		let sortName = '${model.sortName}';
-		let sortValue = '${model.sortValue}';
-		let maxButtonsVisible = 3;
+		var totalPages = ${model.totalPage};
+		var currentPage = ${model.page};
 
 		$(document).ready(function() {
 			var pag = $('#pagination').simplePaginator({
 				totalPages : totalPages,
-				maxButtonsVisible : maxButtonsVisible,
+				maxButtonsVisible : 3,
 				currentPage : currentPage,
 				pageChange : function(page) {
 					if (currentPage != page) {
-						$("#type").val("list");
 						$("#page").val(page);
-						$("#maxPageItem").val(maxPageItem);
-						$("#sortName").val(sortName);
-						$("#sortValue").val(sortValue);
+						$('#limit').val(2);
 						$("#formSubmit").submit();
 					}
 				}

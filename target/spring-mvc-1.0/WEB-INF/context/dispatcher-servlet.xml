@@ -21,7 +21,7 @@
               http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<context:component-scan
-		base-package="com.blog.controller" />
+		base-package="com.blog.controller, com.blog.api" />
 
 	<!-- config to using anotation -->
 	<mvc:annotation-driven />

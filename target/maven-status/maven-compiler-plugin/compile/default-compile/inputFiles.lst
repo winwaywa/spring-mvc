@@ -10,8 +10,11 @@ C:\Users\Hiep Nguyen\Desktop\workspace\spring-mvc-wordspace\spring-mvc\src\main\
 C:\Users\Hiep Nguyen\Desktop\workspace\spring-mvc-wordspace\spring-mvc\src\main\java\com\blog\entity\RoleEntity.java
 C:\Users\Hiep Nguyen\Desktop\workspace\spring-mvc-wordspace\spring-mvc\src\main\java\com\blog\repository\CategoryRepository.java
 C:\Users\Hiep Nguyen\Desktop\workspace\spring-mvc-wordspace\spring-mvc\src\main\java\com\blog\repository\UserRepository.java
+C:\Users\Hiep Nguyen\Desktop\workspace\spring-mvc-wordspace\spring-mvc\src\main\java\com\blog\dto\AbstractDTO.java
 C:\Users\Hiep Nguyen\Desktop\workspace\spring-mvc-wordspace\spring-mvc\src\main\java\com\blog\dao\ICategoryDAO.java
 C:\Users\Hiep Nguyen\Desktop\workspace\spring-mvc-wordspace\spring-mvc\src\main\java\com\blog\entity\BaseEntity.java
+C:\Users\Hiep Nguyen\Desktop\workspace\spring-mvc-wordspace\spring-mvc\src\main\java\com\blog\dto\CategoryDTO.java
+C:\Users\Hiep Nguyen\Desktop\workspace\spring-mvc-wordspace\spring-mvc\src\main\java\com\blog\entity\NewEntity.java
 C:\Users\Hiep Nguyen\Desktop\workspace\spring-mvc-wordspace\spring-mvc\src\main\java\com\blog\service\impl\CategoryService.java
 C:\Users\Hiep Nguyen\Desktop\workspace\spring-mvc-wordspace\spring-mvc\src\main\java\com\blog\sorter\Sorter.java
 C:\Users\Hiep Nguyen\Desktop\workspace\spring-mvc-wordspace\spring-mvc\src\main\java\com\blog\mapper\RowMapper.java
@@ -26,4 +29,5 @@ C:\Users\Hiep Nguyen\Desktop\workspace\spring-mvc-wordspace\spring-mvc\src\main\
 C:\Users\Hiep Nguyen\Desktop\workspace\spring-mvc-wordspace\spring-mvc\src\main\java\com\blog\dao\impl\BaseDAO.java
 C:\Users\Hiep Nguyen\Desktop\workspace\spring-mvc-wordspace\spring-mvc\src\main\java\com\blog\service\ICategoryService.java
 C:\Users\Hiep Nguyen\Desktop\workspace\spring-mvc-wordspace\spring-mvc\src\main\java\com\blog\dao\GenericDAO.java
+C:\Users\Hiep Nguyen\Desktop\workspace\spring-mvc-wordspace\spring-mvc\src\main\java\com\blog\api\admin\CategoryAPI.java
 C:\Users\Hiep Nguyen\Desktop\workspace\spring-mvc-wordspace\spring-mvc\src\main\java\com\blog\paging\Pageble.java

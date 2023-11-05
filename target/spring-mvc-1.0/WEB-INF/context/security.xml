@@ -9,8 +9,10 @@
             
     <http auto-config="false" use-expressions="true" disable-url-rewriting="true">
     
-    	<!-- check permistion -->
+    	<!-- chưa login mà vô admin sẽ return /login -->
     	<intercept-url pattern="/admin/home" access="hasAnyRole('ADMIN')" />
+    	
+    	<!-- đã login user mà vô trang admin sẽ return /access-denied -->
     	<access-denied-handler error-page="/access-denied" />
     	
     	<!-- 

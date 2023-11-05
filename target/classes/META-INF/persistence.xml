@@ -4,5 +4,6 @@
         <class>com.blog.entity.CategoryEntity</class>
         <class>com.blog.entity.UserEntity</class>
         <class>com.blog.entity.RoleEntity</class>
+        <class>com.blog.entity.NewEntity</class>
     </persistence-unit>
 </persistence>

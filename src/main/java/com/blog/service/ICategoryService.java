@@ -12,4 +12,9 @@ public interface ICategoryService {
 
 	int getTotalItem();
 
+	CategoryDTO findById(long id);
+
+	CategoryDTO save(CategoryDTO dto);
+
+	void delete(long[] ids);
 }

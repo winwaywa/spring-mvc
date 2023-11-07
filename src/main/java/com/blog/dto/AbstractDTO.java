@@ -1,14 +1,14 @@
 package com.blog.dto;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AbstractDTO<T> {
 
 	private Long id;
-	private Timestamp createdAt;
-	private Timestamp updatedAt;
+	private Date createdAt;
+	private Date updatedAt;
 	private String createdBy;
 	private String updatedBy;
 	private long[] ids;
@@ -31,19 +31,19 @@ public class AbstractDTO<T> {
 		this.id = id;
 	}
 
-	public Timestamp getCreatedAt() {
+	public Date getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Timestamp createdAt) {
+	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public Timestamp getUpdatedAt() {
+	public Date getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(Timestamp updatedAt) {
+	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 

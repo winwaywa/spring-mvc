@@ -2,8 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 
-<c:url var="APIurl" value="/api-admin-category" />
-<c:url var="CategoryUrl" value="/admin-category" />
+<c:url var="categoryAPI" value="/api/admin/category" />
+<c:url var="categoryUrl" value="/admin/category/list" />
+<c:url var="editCategoryUrl" value="/admin/category/edit" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,41 +15,31 @@
 </head>
 <body>
 	<section class="container">
-
-		<form id="formSubmit">
+		<c:if test="${not empty message}">
+			<div class="alert alert-${alert}">${message}</div>
+		</c:if>
+		<form:form id="formSubmit" modelAttribute="model">
 			<div class="form-group">
-				<label for="inputCode">Category Code</label> <input type="text"
-					name="code" class="form-control" id="inputCode"
-					placeholder="Enter code" value="${model.code}">
+				<label for="inputCode">Category Code</label>
+				<form:input path="code" type="text" name="code" class="form-control"
+					id="inputCode" placeholder="Enter code" />
 			</div>
 			<div class="form-group">
-				<label for="inputName">Category Name</label> <input type="text"
-					name="name" class="form-control" id="inputName"
-					placeholder="Enter name" value="${model.name}">
-
-				<div id="editor">
-					<p>This is some sample content.</p>
-				</div>
-
+				<label for="inputName">Category Name</label>
+				<form:input path="name" type="text" name="name" class="form-control"
+					id="inputName" placeholder="Enter name" />
 			</div>
-			<c:if test="${not empty model}">
+			<form:hidden path="id" id="id" />
+			<c:if test="${not empty model.id}">
 				<button id="btnUpdate" type="submit" class="btn btn-primary">Update</button>
-				<input type="hidden" name="id" value="${model.id}" id="id">
 			</c:if>
-			<c:if test="${empty model}">
+			<c:if test="${empty model.id}">
 				<button id="btnAdd" type="submit" class="btn btn-primary">Add</button>
 			</c:if>
-		</form>
+		</form:form>
 	</section>
 
 	<script type="text/javascript">
-		$(document).ready(function() {
-			ClassicEditor
-            .create( document.querySelector( '#editor' ) ).catch( error => {
-                console.error( error );
-            } );
-		});
-
 		function handleCallAPI(e, method) {
 			e.preventDefault();
 			var formData = $("#formSubmit").serializeArray();
@@ -57,27 +49,31 @@
 				data[item.name] = item.value;
 			})
 
-			$.ajax({
-				url : '${APIurl}',
-				type : method,
-				contentType : "application/json",
-				data : JSON.stringify(data),
-				dataType : "json",
-				success : function(result) {
-					if(method==="POST"){
-						window.location.href = "${CategoryUrl}?type=list&message=insert_success";
-					}else if(method==="PUT"){
-						window.location.href = "${CategoryUrl}?type=list&message=update_success";
-					}
-				},
-				error : function(err) {
-					if(method==="POST"){
-						window.location.href = "${CategoryUrl}?type=list&message=insert_fail";
-					}else if(method==="PUT"){
-						window.location.href = "${CategoryUrl}?type=list&message=update_fail";
-					}
-				}
-			});
+			$
+					.ajax({
+						url : '${categoryAPI}',
+						type : method,
+						contentType : "application/json",
+						data : JSON.stringify(data),
+						dataType : "json",
+						success : function(result) {
+							if (method === "POST") {
+								window.location.href = "${editCategoryURL}?id="
+										+ result.id + "&message=insert_success";
+							} else if (method === "PUT") {
+								window.location.href = "${editCategoryURL}?id="
+										+ result.id + "&message=update_success";
+							}
+						},
+						error : function(err) {
+							if (method === "POST") {
+								window.location.href = "${categoryURL}?page=1&limit=2&message=error_system";
+							} else if (method === "PUT") {
+								window.location.href = "${editCategoryURL}?id="
+										+ result.id + "&message=error_system";
+							}
+						}
+					});
 
 		}
 

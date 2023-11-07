@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 
-<c:url var="APIurl" value="/api-admin-category" />
-<c:url var="CategoryUrl" value="/admin-category" />
+<c:url var="categoryAPI" value="/api/admin/category" />
+<c:url var="categoryUrl" value="/admin/category/list" />
 
 <!DOCTYPE html>
 <html>
@@ -14,10 +14,12 @@
 <body>
 	<div class="container">
 		<c:if test="${not empty message}">
-			<div class="alert alert-${alert}" role="alert">${message}</div>
+			<div class="alert alert-${alert}">
+						${message}
+			</div>
 		</c:if>
 		<div class="d-flex justify-content-end pb-3">
-			<a href="<c:url value='admin-category?type=edit'/>" class="btn btn-success mr-2" data-toggle="tooltip" title="Add new category"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+			<a href="<c:url value='/admin/category/edit'/>" class="btn btn-success mr-2" data-toggle="tooltip" title="Add new category"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
 			<button id="btnDelete" type="button" class="btn btn-danger" data-toggle="tooltip" title="Delete categories">
 				<i class="fa fa-trash" aria-hidden="true"></i>
 			</button>
@@ -51,8 +53,7 @@
 							<td  class="align-bottom">${item.updatedBy}</td>
 							<td  class="align-bottom">${item.updatedAt}</td>
 							<td>
-								<c:url var="editURL" value="/admin-category">
-									<c:param name="type" value="edit" />
+								<c:url var="editURL" value="/admin/category/edit">
 									<c:param name="id" value="${item.id}" />
 								</c:url>
 								<a href="${editURL}" class="btn btn-info" data-toggle="tooltip" title="Update category">
@@ -113,19 +114,18 @@
 			var formData = $("tbody input[type=checkbox]:checked").map(function(){
 				return $(this).val();
 			}).get();
-			var data = {ids:formData};
-
+			
 			$.ajax({
-				url : '${APIurl}',
+				url : '${categoryAPI}',
 				type : method,	
 				contentType: "application/json",
-				data : JSON.stringify(data),
+				data : JSON.stringify(formData),
 				dataType : "json",
 				success : function(result) {
-					window.location.href = "${CategoryUrl}?type=list&message=delete_success";
+					window.location.href = "${categoryUrl}?page=1&limit=2&message=delete_success";
 				},
 				error : function(err) {
-					window.location.href = "${CategoryUrl}?type=list&message=delete_fail";
+					window.location.href = "${categoryUrl}?page=1&limit=2&message=error_system";
 				}
 			});
 			
